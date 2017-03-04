@@ -13,6 +13,10 @@ Here are the lectures of the course for this section...
 
 1. Section 2 Intro
 1. Attacking The Enemies Design
+1. Using Gizmos To Visualise Code
+1. Player Health Bar UI
+1. Enemy Floating Health Bar
+1. Ranged Attack Problem
 
 ... more lectures coming soon!
 
