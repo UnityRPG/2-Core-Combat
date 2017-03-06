@@ -17,7 +17,7 @@ public class CursorAffordance : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         cameraRaycaster = GetComponent<CameraRaycaster>();
-        cameraRaycaster.onCursorLayerChange += OnLayerChanged; // registering
+        cameraRaycaster.notifyLayerChangeObservers += OnLayerChanged; // registering
 	}
 
     void OnLayerChanged(int newLayer) {
