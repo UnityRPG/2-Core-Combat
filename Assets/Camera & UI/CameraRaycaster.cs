@@ -10,16 +10,10 @@ public class CameraRaycaster : MonoBehaviour
 
 	float maxRaycastDepth = 100f; // Hard coded value
 	int topPriorityLayerLastFrame = 0;
-	GameObject fallBackGameObject = null;
 
 	// Setup delegates for broadcasting layer changes to other classes
     public delegate void OnCursorLayerChange(int newLayer); // declare new delegate type
     public event OnCursorLayerChange notifyLayerChangeObservers; // instantiate an observer set
-
-	void Start()
-	{
-		fallBackGameObject = new GameObject ("Fallback Game Object");
-	}
 
     void Update()
 	{
@@ -35,19 +29,30 @@ public class CameraRaycaster : MonoBehaviour
 		Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 		RaycastHit[] raycastHits = Physics.RaycastAll (ray, maxRaycastDepth);
 
-		// Notify delegates of a change in the layer of the highest priority game object under mouse
-		int topPriorityLayerThisFrame = HighestPriorityColliderLayerHit (raycastHits);
-		if (topPriorityLayerThisFrame != topPriorityLayerLastFrame)
+		if (!PriorityHit (raycastHits).HasValue)
 		{
-			topPriorityLayerLastFrame = topPriorityLayerThisFrame;
-			notifyLayerChangeObservers (HighestPriorityColliderLayerHit (raycastHits));
+			notifyLayerChangeObservers (0); // Quit if we didn't hit a priority gameobject
 		}
+		else
+		{
+			// Notify delegates of layer change
+			RaycastHit priorityHit =  PriorityHit (raycastHits).Value;
+			int topPriorityLayerThisFrame = priorityHit.collider.gameObject.layer;
+			if (topPriorityLayerThisFrame != topPriorityLayerLastFrame)
+			{
+				topPriorityLayerLastFrame = topPriorityLayerThisFrame;
+				notifyLayerChangeObservers (topPriorityLayerThisFrame);
+			}
 			
-		// Notify delegates of highest priority game object under mouse when clicked
-		print (HighestPriorityGameobjectHit(raycastHits).name);
+			// Notify delegates of highest priority game object under mouse when clicked
+			if (Input.GetMouseButton (0))
+			{
+				// notifyMouseClickObservers (priorityHit);
+			}
+		}
 	}
 
-	GameObject HighestPriorityGameobjectHit (RaycastHit[] raycastHits)
+	RaycastHit? PriorityHit (RaycastHit[] raycastHits)
 	{
 		// Form list of layer numbers hit
 		List<int> layersOfHitColliders = new List<int> ();
@@ -63,36 +68,36 @@ public class CameraRaycaster : MonoBehaviour
 			{
 				if (hit.collider.gameObject.layer == layer)
 				{
-					return hit.collider.gameObject; // stop looking
+					return hit; // stop looking
 				}
 			}
 		}
-		return fallBackGameObject; // because cannot use GameObject? nullable
+		return null; // because cannot use GameObject? nullable
 	}
 
-	int HighestPriorityColliderLayerHit (RaycastHit[] raycastHits)
-	{
-		if (layerPriorities.Length == 0)
-		{
-			Debug.LogWarning ("No layer priorities set in CameraRaycaster");
-		}
-
-		// Form list of layer numbers hit
-		List<int> layersOfHitColliders = new List<int> ();
-		foreach (RaycastHit hit in raycastHits)
-		{
-			layersOfHitColliders.Add (hit.collider.gameObject.layer);
-		}
-
-		// Broadcast highest priority layer hit
-		foreach (int layer in layerPriorities)
-		{
-			if (layersOfHitColliders.Contains (layer))
-			{
-				return layer; // stop looking
-			}
-		}
-
-		return 0;
-	}
+//	int HighestPriorityColliderLayerHit (RaycastHit[] raycastHits)
+//	{
+//		if (layerPriorities.Length == 0)
+//		{
+//			Debug.LogWarning ("No layer priorities set in CameraRaycaster");
+//		}
+//
+//		// Form list of layer numbers hit
+//		List<int> layersOfHitColliders = new List<int> ();
+//		foreach (RaycastHit hit in raycastHits)
+//		{
+//			layersOfHitColliders.Add (hit.collider.gameObject.layer);
+//		}
+//
+//		// Broadcast highest priority layer hit
+//		foreach (int layer in layerPriorities)
+//		{
+//			if (layersOfHitColliders.Contains (layer))
+//			{
+//				return layer; // stop looking
+//			}
+//		}
+//
+//		return 0;
+//	}
 }
