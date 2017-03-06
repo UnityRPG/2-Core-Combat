@@ -50,6 +50,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 movement = v * cameraForward + h * Camera.main.transform.right;
 
         thirdPersonCharacter.Move(movement, false, false);
+		currentDestination = transform.position;
     }
 
 	void OnMouseClicked(RaycastHit hit, int layerHit)

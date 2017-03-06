@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ballistics : MonoBehaviour {
+public class RangedWeapon : MonoBehaviour {
 
 	[SerializeField] GameObject projectilePrefab = null;
 	[SerializeField] float timeBetweenShots = 0.5f;
@@ -24,7 +24,6 @@ public class Ballistics : MonoBehaviour {
 	{
 		if (layerHit == 9 && (Time.time - lastShotTime) > timeBetweenShots)
 		{
-			player.transform.LookAt (hit.point);
 			FireProjectile (hit.collider.gameObject);
 			lastShotTime = Time.time;
 		}
@@ -33,7 +32,7 @@ public class Ballistics : MonoBehaviour {
 	void FireProjectile (GameObject target)
 	{
 		GameObject projectile = Instantiate (projectilePrefab, transform.position, Quaternion.identity);
-
+		projectile.transform.parent = gameObject.transform;
 		Vector3 aimAdjust = new Vector3 (0, aimHeightAboveFeet, 0);
 		Vector3 velocity = (target.transform.position + aimAdjust - transform.position).normalized * projectileSpeed;
 		projectile.GetComponent<Rigidbody>().velocity = velocity;
