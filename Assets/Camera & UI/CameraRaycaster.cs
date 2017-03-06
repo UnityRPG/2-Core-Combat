@@ -23,8 +23,7 @@ public class CameraRaycaster : MonoBehaviour
 		// Check if pointer is over an interactable UI element
 		if (EventSystem.current.IsPointerOverGameObject ())
 		{
-			topPriorityLayerLastFrame = 5;
-			notifyLayerChangeObservers (5);
+			NotifyObserersIfLayerChanged (5);
 			return; // Stop looking for other objects
 		}
 
@@ -35,24 +34,28 @@ public class CameraRaycaster : MonoBehaviour
 		// Check to see if we hit a priority layer object and call delegates
 		if (!PriorityHit (raycastHits).HasValue)
 		{
-			notifyLayerChangeObservers (0); // Quit if we didn't hit a priority gameobject
+			NotifyObserersIfLayerChanged (0); // Quit if we didn't hit a priority gameobject
+			return;
 		}
-		else
+
+		// Notify delegates of layer change
+		RaycastHit priorityHit =  PriorityHit (raycastHits).Value;
+		NotifyObserersIfLayerChanged(priorityHit.collider.gameObject.layer);
+		
+		// Notify delegates of highest priority game object under mouse when clicked
+		if (Input.GetMouseButton (0))
 		{
-			// Notify delegates of layer change
-			RaycastHit priorityHit =  PriorityHit (raycastHits).Value;
-			int topPriorityLayerThisFrame = priorityHit.collider.gameObject.layer; // TODO latch UI and no layer
-			if (topPriorityLayerThisFrame != topPriorityLayerLastFrame)
-			{
-				topPriorityLayerLastFrame = topPriorityLayerThisFrame;
-				notifyLayerChangeObservers (topPriorityLayerThisFrame);
-			}
-			
-			// Notify delegates of highest priority game object under mouse when clicked
-			if (Input.GetMouseButton (0))
-			{
-				notifyMouseClickObservers (priorityHit);
-			}
+			notifyMouseClickObservers (priorityHit);
+		}
+
+	}
+
+	void NotifyObserersIfLayerChanged(int newLayer)
+	{
+		if (newLayer != topPriorityLayerLastFrame)
+		{
+			topPriorityLayerLastFrame = newLayer;
+			notifyLayerChangeObservers (newLayer);
 		}
 	}
 

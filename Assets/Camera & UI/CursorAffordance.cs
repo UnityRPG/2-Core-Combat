@@ -21,7 +21,6 @@ public class CursorAffordance : MonoBehaviour {
 	}
 
     void OnLayerChanged(int newLayer) {
-		print ("New layer: " + newLayer);
         switch (newLayer)
         {
 		case 5:

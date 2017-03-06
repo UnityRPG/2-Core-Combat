@@ -18,7 +18,6 @@ public class PlayerMovement : MonoBehaviour
     {
         cameraRaycaster = Camera.main.GetComponent<CameraRaycaster>();
 		cameraRaycaster.notifyMouseClickObservers += OnMouseClicked; // registering
-
         thirdPersonCharacter = GetComponent<ThirdPersonCharacter>();
     }
 
@@ -56,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
     {
 		isInDirectMode = false;
 		clickPoint = hit.point;
-		currentDestination = clickPoint;
+		currentDestination = ShortDestination (clickPoint, walkMoveStopRadius);
 		//WalkToDestination ();
     }
 
