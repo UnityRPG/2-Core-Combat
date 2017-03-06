@@ -11,8 +11,11 @@ public class Projectile : MonoBehaviour {
 		rigidBody = GetComponent<Rigidbody> ();
 	}
 	
-	void OnCollisionEnter(Collision collision)
+	void OnTriggerEnter(Collider collider)
 	{
-		Destroy (gameObject);
+		if (collider.GetType () != typeof(Player))
+		{
+			Destroy (gameObject);
+		}
 	}
 }

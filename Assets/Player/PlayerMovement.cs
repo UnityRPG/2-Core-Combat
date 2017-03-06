@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     CameraRaycaster cameraRaycaster;
     Vector3 currentDestination, clickPoint;
 
+
     private void Start()
     {
         cameraRaycaster = Camera.main.GetComponent<CameraRaycaster>();
@@ -50,16 +51,12 @@ public class PlayerMovement : MonoBehaviour
 		if (RangedWeapon.isStandingAndDelivering)
 		{
 			thirdPersonCharacter.Move (Vector3.zero, false, false);
-			float h = Input.GetAxis ("Right Stick H");
-			float v = Input.GetAxis ("Right Stick V");
-
 		}
 		else
 		{
 			// calculate camera relative direction to move:
 			Vector3 cameraForward = Vector3.Scale (Camera.main.transform.forward, new Vector3 (1, 0, 1)).normalized;
 			Vector3 movement = vertical * cameraForward + horizontal * Camera.main.transform.right;
-
 			thirdPersonCharacter.Move (movement, false, false);
 			currentDestination = transform.position;
 		}
