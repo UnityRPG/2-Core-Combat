@@ -15,6 +15,9 @@ public class CameraRaycaster : MonoBehaviour
     public delegate void OnCursorLayerChange(int newLayer); // declare new delegate type
     public event OnCursorLayerChange notifyLayerChangeObservers; // instantiate an observer set
 
+	public delegate void OnClickPriorityLayer(RaycastHit raycastHit); // declare new delegate type
+	public event OnClickPriorityLayer notifyMouseClickObservers; // instantiate an observer set
+
     void Update()
 	{
 		// Check if pointer is over an interactable UI element
@@ -29,6 +32,7 @@ public class CameraRaycaster : MonoBehaviour
 		Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 		RaycastHit[] raycastHits = Physics.RaycastAll (ray, maxRaycastDepth);
 
+		// Check to see if we hit a priority layer object and call delegates
 		if (!PriorityHit (raycastHits).HasValue)
 		{
 			notifyLayerChangeObservers (0); // Quit if we didn't hit a priority gameobject
@@ -37,7 +41,7 @@ public class CameraRaycaster : MonoBehaviour
 		{
 			// Notify delegates of layer change
 			RaycastHit priorityHit =  PriorityHit (raycastHits).Value;
-			int topPriorityLayerThisFrame = priorityHit.collider.gameObject.layer;
+			int topPriorityLayerThisFrame = priorityHit.collider.gameObject.layer; // TODO latch UI and no layer
 			if (topPriorityLayerThisFrame != topPriorityLayerLastFrame)
 			{
 				topPriorityLayerLastFrame = topPriorityLayerThisFrame;
@@ -47,7 +51,7 @@ public class CameraRaycaster : MonoBehaviour
 			// Notify delegates of highest priority game object under mouse when clicked
 			if (Input.GetMouseButton (0))
 			{
-				// notifyMouseClickObservers (priorityHit);
+				notifyMouseClickObservers (priorityHit);
 			}
 		}
 	}
@@ -74,30 +78,4 @@ public class CameraRaycaster : MonoBehaviour
 		}
 		return null; // because cannot use GameObject? nullable
 	}
-
-//	int HighestPriorityColliderLayerHit (RaycastHit[] raycastHits)
-//	{
-//		if (layerPriorities.Length == 0)
-//		{
-//			Debug.LogWarning ("No layer priorities set in CameraRaycaster");
-//		}
-//
-//		// Form list of layer numbers hit
-//		List<int> layersOfHitColliders = new List<int> ();
-//		foreach (RaycastHit hit in raycastHits)
-//		{
-//			layersOfHitColliders.Add (hit.collider.gameObject.layer);
-//		}
-//
-//		// Broadcast highest priority layer hit
-//		foreach (int layer in layerPriorities)
-//		{
-//			if (layersOfHitColliders.Contains (layer))
-//			{
-//				return layer; // stop looking
-//			}
-//		}
-//
-//		return 0;
-//	}
 }
