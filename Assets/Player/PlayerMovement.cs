@@ -8,7 +8,6 @@ public class PlayerMovement : MonoBehaviour
 	public static bool isInDirectMode = false;
 
     [SerializeField] float walkMoveStopRadius = 0.2f;
-    [SerializeField] float attackMoveStopRadius = 5f;
 
     ThirdPersonCharacter thirdPersonCharacter;   // A reference to the ThirdPersonCharacter on the object
     CameraRaycaster cameraRaycaster;
@@ -93,10 +92,6 @@ public class PlayerMovement : MonoBehaviour
 			Gizmos.DrawSphere (currentDestination, 0.15f);
 			Gizmos.DrawSphere (clickPoint, 0.1f);
 		}
-
-        // Draw attack sphere
-        Gizmos.color = new Color(255f, 0f, 0, .5f);
-        Gizmos.DrawWireSphere(transform.position, attackMoveStopRadius);
     }
 }
 
