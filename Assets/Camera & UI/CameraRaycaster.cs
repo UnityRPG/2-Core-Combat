@@ -15,7 +15,7 @@ public class CameraRaycaster : MonoBehaviour
     public delegate void OnCursorLayerChange(int newLayer); // declare new delegate type
     public event OnCursorLayerChange notifyLayerChangeObservers; // instantiate an observer set
 
-	public delegate void OnClickPriorityLayer(RaycastHit raycastHit); // declare new delegate type
+	public delegate void OnClickPriorityLayer(RaycastHit raycastHit, int layerHit); // declare new delegate type
 	public event OnClickPriorityLayer notifyMouseClickObservers; // instantiate an observer set
 
     void Update()
@@ -40,12 +40,13 @@ public class CameraRaycaster : MonoBehaviour
 
 		// Notify delegates of layer change
 		RaycastHit priorityHit =  PriorityHit (raycastHits).Value;
-		NotifyObserersIfLayerChanged(priorityHit.collider.gameObject.layer);
+		var layerHit = priorityHit.collider.gameObject.layer;
+		NotifyObserersIfLayerChanged(layerHit);
 		
 		// Notify delegates of highest priority game object under mouse when clicked
 		if (Input.GetMouseButton (0))
 		{
-			notifyMouseClickObservers (priorityHit);
+			notifyMouseClickObservers (priorityHit, layerHit);
 		}
 
 	}

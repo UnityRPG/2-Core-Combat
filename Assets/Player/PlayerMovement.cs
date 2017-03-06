@@ -51,12 +51,15 @@ public class PlayerMovement : MonoBehaviour
         thirdPersonCharacter.Move(movement, false, false);
     }
 
-	void OnMouseClicked(RaycastHit hit)
+	void OnMouseClicked(RaycastHit hit, int layerHit)
     {
 		isInDirectMode = false;
 		clickPoint = hit.point;
-		currentDestination = ShortDestination (clickPoint, walkMoveStopRadius);
-		//WalkToDestination ();
+
+		if (layerHit == 8)
+		{
+			currentDestination = ShortDestination (clickPoint, walkMoveStopRadius);
+		}
     }
 
     void WalkToLastClickPoint()
