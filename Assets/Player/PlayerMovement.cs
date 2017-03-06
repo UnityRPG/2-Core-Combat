@@ -35,22 +35,34 @@ public class PlayerMovement : MonoBehaviour
 
 		if (isInDirectMode)
 		{
+			Cursor.visible = false;
 			ProcessDirectMovement (h, v);
 		}
 		else
 		{
+			Cursor.visible = true;
 			WalkToLastClickPoint ();
 		}
 	}
 
-	void ProcessDirectMovement(float h, float v)
+	void ProcessDirectMovement(float horizontal, float vertical)
     {
-        // calculate camera relative direction to move:
-        Vector3 cameraForward = Vector3.Scale(Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;
-        Vector3 movement = v * cameraForward + h * Camera.main.transform.right;
+		if (RangedWeapon.isStandingAndDelivering)
+		{
+			thirdPersonCharacter.Move (Vector3.zero, false, false);
+			float h = Input.GetAxis ("Right Stick H");
+			float v = Input.GetAxis ("Right Stick V");
 
-        thirdPersonCharacter.Move(movement, false, false);
-		currentDestination = transform.position;
+		}
+		else
+		{
+			// calculate camera relative direction to move:
+			Vector3 cameraForward = Vector3.Scale (Camera.main.transform.forward, new Vector3 (1, 0, 1)).normalized;
+			Vector3 movement = vertical * cameraForward + horizontal * Camera.main.transform.right;
+
+			thirdPersonCharacter.Move (movement, false, false);
+			currentDestination = transform.position;
+		}
     }
 
 	void OnMouseClicked(RaycastHit hit, int layerHit)

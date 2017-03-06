@@ -13,4 +13,9 @@ public class Player : MonoBehaviour {
 			return currentHealthPoints / maxHealthPoints;
 		}
 	}
+
+	public Vector3 GetForwardDirection()
+	{
+		return transform.forward;
+	}
 }
