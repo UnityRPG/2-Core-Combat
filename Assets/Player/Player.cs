@@ -8,11 +8,9 @@ public class Player : MonoBehaviour {
 
     float currentHealthPoints = 100f;
 
-    public float healthAsPercentage
-    {
-        get
-        {
-            return currentHealthPoints / maxHealthPoints;
-        }
-    }
+    public float healthAsPercentage {
+		get {
+			return currentHealthPoints / maxHealthPoints;
+		}
+	}
 }

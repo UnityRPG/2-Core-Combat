@@ -19,6 +19,8 @@ public class PlayerMovement : MonoBehaviour
         cameraRaycaster = Camera.main.GetComponent<CameraRaycaster>();
 		cameraRaycaster.notifyMouseClickObservers += OnMouseClicked; // registering
         thirdPersonCharacter = GetComponent<ThirdPersonCharacter>();
+		currentDestination = transform.position;
+		clickPoint = transform.position;
     }
 
     // Fixed update is called in sync with physics
@@ -54,10 +56,10 @@ public class PlayerMovement : MonoBehaviour
 	void OnMouseClicked(RaycastHit hit, int layerHit)
     {
 		isInDirectMode = false;
-		clickPoint = hit.point;
 
 		if (layerHit == 8)
 		{
+			clickPoint = hit.point;
 			currentDestination = ShortDestination (clickPoint, walkMoveStopRadius);
 		}
     }
