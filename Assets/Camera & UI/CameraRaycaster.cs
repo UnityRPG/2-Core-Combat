@@ -2,13 +2,12 @@
 
 public class CameraRaycaster : MonoBehaviour
 {
-    public Layer[] layerPriorities = {
-        Layer.Enemy,
-        Layer.Walkable
-    };
+	public int[] layerPriorities;
 
     [SerializeField] float distanceToBackground = 100f;
     Camera viewCamera;
+
+	public int layerHit;
 
     RaycastHit raycastHit;
     public RaycastHit hit
@@ -16,13 +15,7 @@ public class CameraRaycaster : MonoBehaviour
         get { return raycastHit; }
     }
 
-    Layer layerHit;
-    public Layer currentLayerHit
-    {
-        get { return layerHit; }
-    }
-
-    public delegate void OnLayerChange(Layer newLayer); // declare new delegate type
+    public delegate void OnLayerChange(int newLayer); // declare new delegate type
     public event OnLayerChange onLayerChange; // instantiate an observer set
 
     void Start()
@@ -33,7 +26,7 @@ public class CameraRaycaster : MonoBehaviour
     void Update()
     {
         // Look for and return priority layer hit
-        foreach (Layer layer in layerPriorities)
+        foreach (int layer in layerPriorities)
         {
             var hit = RaycastForLayer(layer);
             if (hit.HasValue)
@@ -51,11 +44,10 @@ public class CameraRaycaster : MonoBehaviour
 
         // Otherwise return background hit
         raycastHit.distance = distanceToBackground;
-        layerHit = Layer.RaycastEndStop;
 		onLayerChange (layerHit);
     }
 
-    RaycastHit? RaycastForLayer(Layer layer)
+    RaycastHit? RaycastForLayer(int layer)
     {
         int layerMask = 1 << (int)layer; // See Unity docs for mask formation
         Ray ray = viewCamera.ScreenPointToRay(Input.mousePosition);
