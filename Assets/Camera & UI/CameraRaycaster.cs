@@ -7,22 +7,33 @@ public class CameraRaycaster : MonoBehaviour
 	// INSPECTOR PROPERTIES RENDERED BY CUSTOM EDITOR SCRIPT
 	[SerializeField] int[] layerPriorities;
 
-	float maxRaycastDepth = 100f;
-	Camera viewCamera;
+	float maxRaycastDepth = 100f; // Hard coded value
+	int topLayerLastFrame = 0;
 
+	// Setup delegates for broadcasting layer changes to other classes
     public delegate void OnLayerChange(int newLayer); // declare new delegate type
     public event OnLayerChange onLayerChange; // instantiate an observer set
 
-    void Start()
-    {
-        viewCamera = Camera.main;
-    }
-
     void Update()
     {
-		// Raycast to max depth
-		Ray ray = viewCamera.ScreenPointToRay(Input.mousePosition);
+		// Raycast to max depth, every frame as things can move under mouse
+		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 		RaycastHit[] raycastHits = Physics.RaycastAll (ray, maxRaycastDepth);
+
+		int topLayerThisFrame = HighestPriorityColliderLayerHit (raycastHits);
+		if (topLayerThisFrame != topLayerLastFrame)
+		{
+			onLayerChange (HighestPriorityColliderLayerHit (raycastHits));
+			topLayerLastFrame = topLayerThisFrame;
+		}
+	}
+
+	int HighestPriorityColliderLayerHit (RaycastHit[] raycastHits)
+	{
+		if (layerPriorities.Length == 0)
+		{
+			Debug.LogWarning ("No layer priorities set in CameraRaycaster");
+		}
 
 		// Form list of layer numbers hit
 		List<int> layersHit = new List<int> ();
@@ -35,13 +46,10 @@ public class CameraRaycaster : MonoBehaviour
 		{
 			if (layersHit.Contains (layer))
 			{
-				onLayerChange (layer);
-				return; // stop looking
-			}
-			else
-			{
-				onLayerChange (0);
+				return layer; // stop looking
 			}
 		}
+
+		return 0;
 	}
 }
