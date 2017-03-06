@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 using System.Linq;
 using System.Collections.Generic;
 
@@ -11,21 +12,33 @@ public class CameraRaycaster : MonoBehaviour
 	int topLayerLastFrame = 0;
 
 	// Setup delegates for broadcasting layer changes to other classes
-    public delegate void OnLayerChange(int newLayer); // declare new delegate type
-    public event OnLayerChange onLayerChange; // instantiate an observer set
+    public delegate void OnCursorLayerChange(int newLayer); // declare new delegate type
+    public event OnCursorLayerChange onCursorLayerChange; // instantiate an observer set
 
     void Update()
-    {
+	{
+		// Check if pointer is over an interactable UI element
+		if (EventSystem.current.IsPointerOverGameObject ())
+		{
+			topLayerLastFrame = 5;
+			onCursorLayerChange (5);
+			return;
+		}
+
 		// Raycast to max depth, every frame as things can move under mouse
-		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+		Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 		RaycastHit[] raycastHits = Physics.RaycastAll (ray, maxRaycastDepth);
 
+		// Notify delegates of a change in the layer of the highest priority game object under mouse
 		int topLayerThisFrame = HighestPriorityColliderLayerHit (raycastHits);
 		if (topLayerThisFrame != topLayerLastFrame)
 		{
-			onLayerChange (HighestPriorityColliderLayerHit (raycastHits));
 			topLayerLastFrame = topLayerThisFrame;
+			onCursorLayerChange (HighestPriorityColliderLayerHit (raycastHits));
 		}
+
+		// Notify delegates of highest priority game object under mouse when clicked
+
 	}
 
 	int HighestPriorityColliderLayerHit (RaycastHit[] raycastHits)
@@ -37,7 +50,8 @@ public class CameraRaycaster : MonoBehaviour
 
 		// Form list of layer numbers hit
 		List<int> layersHit = new List<int> ();
-		foreach (RaycastHit hit in raycastHits) {
+		foreach (RaycastHit hit in raycastHits)
+		{
 			layersHit.Add (hit.collider.gameObject.layer);
 		}
 
