@@ -56,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
-            clickPoint = cameraRaycaster.hit.point;
+//            clickPoint = cameraRaycaster.hit.point;
 //            switch (cameraRaycaster.currentLayerHit)
 //            {
 //                case Layer.Walkable:

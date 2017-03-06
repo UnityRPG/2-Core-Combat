@@ -1,19 +1,14 @@
 ﻿using UnityEngine;
+using System.Linq;
+using System.Collections.Generic;
 
 public class CameraRaycaster : MonoBehaviour
 {
-	public int[] layerPriorities;
+	// INSPECTOR PROPERTIES RENDERED BY CUSTOM EDITOR SCRIPT
+	[SerializeField] int[] layerPriorities;
 
-    [SerializeField] float distanceToBackground = 100f;
-    Camera viewCamera;
-
-	public int layerHit;
-
-    RaycastHit raycastHit;
-    public RaycastHit hit
-    {
-        get { return raycastHit; }
-    }
+	float maxRaycastDepth = 100f;
+	Camera viewCamera;
 
     public delegate void OnLayerChange(int newLayer); // declare new delegate type
     public event OnLayerChange onLayerChange; // instantiate an observer set
@@ -25,39 +20,28 @@ public class CameraRaycaster : MonoBehaviour
 
     void Update()
     {
-        // Look for and return priority layer hit
-        foreach (int layer in layerPriorities)
-        {
-            var hit = RaycastForLayer(layer);
-            if (hit.HasValue)
-            {
-                raycastHit = hit.Value;
-                if (layerHit != layer) // if layer has changed
-                {
-                    layerHit = layer;
-                    onLayerChange(layer); // call the delegates
-                }
-                layerHit = layer;
-                return;
-            }
-        }
+		// Raycast to max depth
+		Ray ray = viewCamera.ScreenPointToRay(Input.mousePosition);
+		RaycastHit[] raycastHits = Physics.RaycastAll (ray, maxRaycastDepth);
 
-        // Otherwise return background hit
-        raycastHit.distance = distanceToBackground;
-		onLayerChange (layerHit);
-    }
+		// Form list of layer numbers hit
+		List<int> layersHit = new List<int> ();
+		foreach (RaycastHit hit in raycastHits) {
+			layersHit.Add (hit.collider.gameObject.layer);
+		}
 
-    RaycastHit? RaycastForLayer(int layer)
-    {
-        int layerMask = 1 << (int)layer; // See Unity docs for mask formation
-        Ray ray = viewCamera.ScreenPointToRay(Input.mousePosition);
-
-        RaycastHit hit; // used as an out parameter
-        bool hasHit = Physics.Raycast(ray, out hit, distanceToBackground, layerMask);
-        if (hasHit)
-        {
-            return hit;
-        }
-        return null;
-    }
+		// Broadcast highest priority layer hit
+		foreach (int layer in layerPriorities)
+		{
+			if (layersHit.Contains (layer))
+			{
+				onLayerChange (layer);
+				return; // stop looking
+			}
+			else
+			{
+				onLayerChange (0);
+			}
+		}
+	}
 }
