@@ -8,15 +8,22 @@ public class Test : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        myHandle = this.InvokeRepeating(Donkey, 1f, 1f);
-        this.Invoke(CancelMe, 5f);
+        var coRoutineHandle = StartCoroutine(LazyRepeatPrint(0.5f));
+        StartCoroutine(CancelAfterSeconds(5f, coRoutineHandle));
 	}
 
-    void CancelMe() {
-        StopCoroutine(myHandle);
+    IEnumerator CancelAfterSeconds(float time, Coroutine handle)
+    {
+        yield return new WaitForSeconds(time);
+        StopCoroutine(handle);
     }
 
-    void Donkey() {
-        print("lksadf");
+    IEnumerator LazyRepeatPrint(float timeBetween)
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(timeBetween);
+            print("Printed repeating");
+        }
     }
 }
