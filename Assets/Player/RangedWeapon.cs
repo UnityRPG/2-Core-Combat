@@ -26,8 +26,6 @@ public class RangedWeapon : MonoBehaviour {
 
 	void Update()
 	{
-        print(Input.GetAxis("Right Trigger"));
-
         if (Input.GetAxis ("Right Trigger") > rightTriggerFireThreshold)
 		{
 			isStandingAndDelivering = true;

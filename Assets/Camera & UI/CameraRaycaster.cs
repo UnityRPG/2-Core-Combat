@@ -8,7 +8,7 @@ public class CameraRaycaster : MonoBehaviour
 	// INSPECTOR PROPERTIES RENDERED BY CUSTOM EDITOR SCRIPT
 	[SerializeField] int[] layerPriorities;
 
-	float maxRaycastDepth = 100f; // Hard coded value
+    float maxRaycastDepth = 100f; // Hard coded value
 	int topPriorityLayerLastFrame = 0;
 
 	// Setup delegates for broadcasting layer changes to other classes
@@ -31,24 +31,22 @@ public class CameraRaycaster : MonoBehaviour
 		Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 		RaycastHit[] raycastHits = Physics.RaycastAll (ray, maxRaycastDepth);
 
-		// Check to see if we hit a priority layer object and call delegates
-		if (!PriorityHit (raycastHits).HasValue)
+        RaycastHit? priorityHit = FindTopPriorityHit(raycastHits);
+        if (!priorityHit.HasValue) // if hit no priority object
 		{
-			NotifyObserersIfLayerChanged (0); // Quit if we didn't hit a priority gameobject
+			NotifyObserersIfLayerChanged (0); // broadcast default layer
 			return;
 		}
 
 		// Notify delegates of layer change
-		RaycastHit priorityHit =  PriorityHit (raycastHits).Value;
-		var layerHit = priorityHit.collider.gameObject.layer;
+		var layerHit = priorityHit.Value.collider.gameObject.layer;
 		NotifyObserersIfLayerChanged(layerHit);
 		
 		// Notify delegates of highest priority game object under mouse when clicked
 		if (Input.GetMouseButton (0))
 		{
-			notifyMouseClickObservers (priorityHit, layerHit);
+			notifyMouseClickObservers (priorityHit.Value, layerHit);
 		}
-
 	}
 
 	void NotifyObserersIfLayerChanged(int newLayer)
@@ -60,7 +58,7 @@ public class CameraRaycaster : MonoBehaviour
 		}
 	}
 
-	RaycastHit? PriorityHit (RaycastHit[] raycastHits)
+	RaycastHit? FindTopPriorityHit (RaycastHit[] raycastHits)
 	{
 		// Form list of layer numbers hit
 		List<int> layersOfHitColliders = new List<int> ();

@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
 	public static bool isInDirectMode = false;
 
     [SerializeField] float walkMoveStopRadius = 0.2f;
+    [SerializeField] int walkableLayer = 8;
 
     ThirdPersonCharacter thirdPersonCharacter;   // A reference to the ThirdPersonCharacter on the object
     CameraRaycaster cameraRaycaster;
@@ -66,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
     {
 		isInDirectMode = false;
 
-		if (layerHit == 8)
+		if (layerHit == walkableLayer)
 		{
 			clickPoint = hit.point;
 			currentDestination = ShortDestination (clickPoint, walkMoveStopRadius);
