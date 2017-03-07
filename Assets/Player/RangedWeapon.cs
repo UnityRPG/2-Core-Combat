@@ -10,16 +10,17 @@ public class RangedWeapon : MonoBehaviour {
 	[SerializeField] float projectileSpeed = 10f;
 	[SerializeField] float aimHeightAboveFeet = 1f;
 	[SerializeField] float rightTriggerFireThreshold = 0.8f;
-	[SerializeField] GameObject projectileParent = null;
 
 	float lastShotTime = 0f;
 	CameraRaycaster cameraRaycaster;
 	Vector3 aimDirection;
+	GameObject dynamicObjectsParent = null;
 
 	// Use this for initialization
 	void Start () {
 		cameraRaycaster = Camera.main.GetComponent<CameraRaycaster>();
 		cameraRaycaster.notifyMouseClickObservers += OnMouseClicked; // registering
+		dynamicObjectsParent = new GameObject("DynamicObjects"); // consider singleton
 	}
 
 	void Update()
@@ -58,7 +59,7 @@ public class RangedWeapon : MonoBehaviour {
 		if (Time.time - lastShotTime > timeBetweenShots)
 		{
 			GameObject projectile = Instantiate (projectilePrefab, transform.position, Quaternion.identity);
-			projectile.transform.parent = projectileParent.transform; 	 
+			projectile.transform.parent = dynamicObjectsParent.transform; 	 
 			projectile.GetComponent<Rigidbody>().velocity = velocity.normalized * projectileSpeed;
 			lastShotTime = Time.time;
 		}

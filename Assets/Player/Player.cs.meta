@@ -1,10 +1,14 @@
 fileFormatVersion: 2
 guid: a9268856d129aa64a8ab4590ce181c5b
-timeCreated: 1488535323
+timeCreated: 1488914014
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - followCameraPrefab: {fileID: 1907173498462206, guid: ef5f0307231176944ab46cd8697a6417,
+      type: 2}
+  - gameCanvasPrefab: {fileID: 1653876244793134, guid: 75a43cca039264395b99698681e52275,
+      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour {
 
-    GameObject player;
+	[SerializeField] GameObject gameCanvasPrefab = null;
+	[SerializeField] GameObject eventSystemPrefab = null;
+
+	GameObject player;
 
 	// Use this for initialization
 	void Start () {
         player = GameObject.FindGameObjectWithTag("Player");
+		Instantiate (gameCanvasPrefab);
+		Instantiate (eventSystemPrefab);
 	}
 	
 	// Update is called once per frame

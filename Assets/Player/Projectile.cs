@@ -13,9 +13,6 @@ public class Projectile : MonoBehaviour {
 	
 	void OnTriggerEnter(Collider collider)
 	{
-		if (collider.GetType () != typeof(Player))
-		{
-			Destroy (gameObject);
-		}
+		Destroy (gameObject);
 	}
 }
