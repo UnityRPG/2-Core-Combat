@@ -15,7 +15,4 @@ public class Enemy : MonoBehaviour {
             return currentHealthPoints / maxHealthPoints;
         }
     }
-
-	// NOTE: Tempting to use OnMouseOver() for enemy highlighting
-	// ... but this won't work with gamepad control
 }

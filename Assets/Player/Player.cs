@@ -23,7 +23,7 @@ public class Player : MonoBehaviour {
 		}
 		else
 		{
-			GameObject ourCamera = Instantiate (cameraPrefab);	
+			Instantiate (cameraPrefab);	
 		}
 	}
 

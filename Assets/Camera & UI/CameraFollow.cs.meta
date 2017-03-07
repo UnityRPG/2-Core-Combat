@@ -1,14 +1,10 @@
 fileFormatVersion: 2
 guid: 1f38397a5b56d9b44b4c13df92053e12
-timeCreated: 1488918883
+timeCreated: 1487371419
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences:
-  - gameCanvasPrefab: {fileID: 1653876244793134, guid: 75a43cca039264395b99698681e52275,
-      type: 2}
-  - eventSystemPrefab: {fileID: 1110802628024388, guid: aa7d9f10fc88b4dc98864db21f2887b8,
-      type: 2}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
