@@ -23,7 +23,7 @@ public class CursorAffordance : MonoBehaviour {
     void OnLayerChanged(int newLayer) {
         switch (newLayer)
         {
-		case 5:
+		case 5: // TODO make cameraRaycaster member variables
 			Cursor.SetCursor (buttonCursor, cursorHotspot, CursorMode.Auto);
 			break;
 		case 8:

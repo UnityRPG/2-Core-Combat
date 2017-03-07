@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RangedWeapon : MonoBehaviour {
-	public static bool isStandingAndDelivering = false;
+	public static bool isFiring = false; // move to Player member with getter
 
 	[SerializeField] GameObject projectilePrefab = null;
 	[SerializeField] float timeBetweenShots = 0.5f;
@@ -14,33 +14,31 @@ public class RangedWeapon : MonoBehaviour {
 
 	float lastShotTime = 0f;
 	CameraRaycaster cameraRaycaster;
-	Player player;
 	Vector3 aimDirection;
 
 	// Use this for initialization
 	void Start () {
 		cameraRaycaster = Camera.main.GetComponent<CameraRaycaster>();
 		cameraRaycaster.notifyMouseClickObservers += OnMouseClicked; // registering
-		player = FindObjectOfType<Player>();
 	}
 
 	void Update()
 	{
         if (Input.GetAxis ("Right Trigger") > rightTriggerFireThreshold)
 		{
-			isStandingAndDelivering = true;
+			isFiring = true;
 			float h = Input.GetAxis ("Horizontal");
 			float v = Input.GetAxis ("Vertical");
 
 			Vector3 cameraForward = Vector3.Scale (Camera.main.transform.forward, new Vector3 (1, 0, 1)).normalized;
-			aimDirection = v * cameraForward + h * Camera.main.transform.right;
+			aimDirection = v * cameraForward + h * Camera.main.transform.right; // TODO make remember last aim
 
-			transform.rotation = Quaternion.LookRotation (aimDirection);
+			transform.rotation = Quaternion.LookRotation (aimDirection); // Create rotation animator parameter
 			FireProjectile (aimDirection);
 		}
 		else
 		{
-			isStandingAndDelivering = false;
+			isFiring = false;
 		}
 	}
 
@@ -68,7 +66,7 @@ public class RangedWeapon : MonoBehaviour {
 
 	void OnDrawGizmos()
 	{
-		if (isStandingAndDelivering)
+		if (isFiring)
 		{
 			Gizmos.color = Color.red;
 			Gizmos.matrix = transform.localToWorldMatrix;

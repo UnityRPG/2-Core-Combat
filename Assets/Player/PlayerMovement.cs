@@ -49,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
 
 	void ProcessDirectMovement(float horizontal, float vertical)
     {
-		if (RangedWeapon.isStandingAndDelivering)
+		if (RangedWeapon.isFiring)
 		{
 			thirdPersonCharacter.Move (Vector3.zero, false, false);
 		}
