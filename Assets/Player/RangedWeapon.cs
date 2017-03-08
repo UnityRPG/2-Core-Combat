@@ -10,8 +10,9 @@ public class RangedWeapon : MonoBehaviour {
 	[SerializeField] float projectileSpeed = 10f;
 	[SerializeField] float aimHeightAboveFeet = 1f;
 	[SerializeField] float rightTriggerFireThreshold = 0.8f;
+    [SerializeField] float aimStickThreshold = 0.2f;
 
-	float lastShotTime = 0f;
+    float lastShotTime = 0f;
 	CameraRaycaster cameraRaycaster;
 	Vector3 aimDirection;
 	GameObject dynamicObjectsParent = null;
@@ -34,9 +35,12 @@ public class RangedWeapon : MonoBehaviour {
 			Vector3 cameraForward = Vector3.Scale (Camera.main.transform.forward, new Vector3 (1, 0, 1)).normalized;
 			aimDirection = v * cameraForward + h * Camera.main.transform.right; // TODO make remember last aim
 
-			transform.rotation = Quaternion.LookRotation (aimDirection); // Create rotation animator parameter
-			FireProjectile (aimDirection);
-		}
+            if (Mathf.Abs(h) > aimStickThreshold || Mathf.Abs(v) > aimStickThreshold)
+            {
+                transform.rotation = Quaternion.LookRotation(aimDirection); // Create rotation animator parameter
+                FireProjectile(aimDirection);
+            }
+            }
 		else
 		{
 			isFiring = false;
