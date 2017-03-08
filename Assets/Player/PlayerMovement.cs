@@ -70,14 +70,14 @@ public class PlayerMovement : MonoBehaviour
 		if (layerHit == walkableLayer)
 		{
 			clickPoint = hit.point;
-			currentDestination = ShortDestination (clickPoint, walkMoveStopRadius);
+            currentDestination = clickPoint;
 		}
     }
 
     void WalkToLastClickPoint()
     {
         var playerToClickPoint = currentDestination - transform.position;
-        if (playerToClickPoint.magnitude >= 0)
+        if (playerToClickPoint.magnitude >= walkMoveStopRadius)
         {
             thirdPersonCharacter.Move(playerToClickPoint, false, false);
         }
@@ -85,24 +85,6 @@ public class PlayerMovement : MonoBehaviour
         {
             thirdPersonCharacter.Move(Vector3.zero, false, false);
         }
-    }
-
-    Vector3 ShortDestination(Vector3 destination, float shortening)
-    {
-        Vector3 reductionVector = (destination - transform.position).normalized * shortening;
-        return destination - reductionVector;
-    }
-
-    void OnDrawGizmos()
-    {
-        // Draw movement gizmos
-		if (!isInDirectMode)
-		{
-			Gizmos.color = Color.black;
-			Gizmos.DrawLine (transform.position, clickPoint);
-			Gizmos.DrawSphere (currentDestination, 0.15f);
-			Gizmos.DrawSphere (clickPoint, 0.1f);
-		}
     }
 }
 
