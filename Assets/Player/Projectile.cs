@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour {
 
+    
 	Rigidbody rigidBody;
 
 	// Use this for initialization
