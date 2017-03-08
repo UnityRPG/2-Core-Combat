@@ -18,6 +18,7 @@ Here are the lectures of the course for this section...
 1. Enemy Floating Health Bar
 1. Ranged Attack Problem
 1. Update Your 1 Page GDD
+1. Set Your Art Direction
 
 ... more lectures coming soon!
 
