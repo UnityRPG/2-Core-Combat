@@ -6,9 +6,13 @@ ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Spiked_Wall
     400000: //RootNode
+    400002: Spiked_Wall
     2300000: //RootNode
+    2300002: Spiked_Wall
     3300000: //RootNode
+    3300002: Spiked_Wall
     4300000: Spiked_Wall
     7400000: Default Take
     9500000: //RootNode
@@ -71,7 +75,7 @@ ModelImporter:
     rootMotionBoneName: 
     rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 0

@@ -8,13 +8,17 @@ ModelImporter:
     100000: Cube
     100002: Empty
     100004: //RootNode
+    100006: WaterMill
     400000: Cube
     400002: Empty
     400004: //RootNode
+    400006: WaterMill
     2300000: Cube
     2300002: //RootNode
+    2300004: WaterMill
     3300000: Cube
     3300002: //RootNode
+    3300004: WaterMill
     4300000: Cube
     4300002: WaterMill
     7400000: Default Take
@@ -78,7 +82,7 @@ ModelImporter:
     rootMotionBoneName: 
     rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 0
