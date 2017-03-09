@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour, IDamageable {
 
     [SerializeField] float maxHealthPoints = 100f;
     [SerializeField] ParticleSystem hitParticleEffect;
+    [SerializeField] float destroySecondsAfterDeath = 0.1f;
 
     float currentHealthPoints = 100f;
     
@@ -28,5 +29,9 @@ public class Enemy : MonoBehaviour, IDamageable {
     {
         currentHealthPoints = Mathf.Clamp(currentHealthPoints - damage, 0, maxHealthPoints);
         if (hitParticleEffect) { hitParticleEffect.Play(); };
+        if (currentHealthPoints <= 0)
+        {
+            Destroy(gameObject, destroySecondsAfterDeath);
+        }
     }
 }
