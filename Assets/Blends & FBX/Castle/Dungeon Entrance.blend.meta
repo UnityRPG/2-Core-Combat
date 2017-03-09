@@ -1,27 +1,24 @@
 fileFormatVersion: 2
-guid: 1d44a4b198aa2aa4a8c675bf09bb23c9
-timeCreated: 1488990307
+guid: aec0e35ab48966645b58be263c7c5816
+timeCreated: 1488990313
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Logs
-    100004: Stump
-    100006: Axe
+    100002: DungeonEntrance
+    100004: Dungeon_Entrance
     400000: //RootNode
-    400002: Logs
-    400004: Stump
-    400006: Axe
-    2300000: Logs
-    2300002: Stump
-    2300004: Axe
-    3300000: Logs
-    3300002: Stump
-    3300004: Axe
-    4300000: Logs
-    4300002: Stump
-    4300004: Axe
+    400002: DungeonEntrance
+    400004: Dungeon_Entrance
+    2300000: //RootNode
+    2300002: DungeonEntrance
+    2300004: Dungeon_Entrance
+    3300000: //RootNode
+    3300002: DungeonEntrance
+    3300004: Dungeon_Entrance
+    4300000: Dungeon_Entrance
+    4300002: DungeonEntrance
     7400000: Default Take
     9500000: //RootNode
   materials:
@@ -90,5 +87,5 @@ ModelImporter:
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
-  assetBundleName: robert szarka
-  assetBundleVariant: robert
+  assetBundleName: 
+  assetBundleVariant: 
