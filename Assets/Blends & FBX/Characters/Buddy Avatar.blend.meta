@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: cbd22468902009d4eaaed68ce328be96
-timeCreated: 1488926821
+timeCreated: 1489015592
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -110,11 +110,11 @@ ModelImporter:
     - boneName: Upper_Leg_L
       humanName: LeftUpperLeg
       limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
+        min: {x: 0, y: 0, z: -6.36364}
+        max: {x: 0, y: 0, z: 10.000008}
         value: {x: 0, y: 0, z: 0}
         length: 0
-        modified: 0
+        modified: 1
     - boneName: Upper_Leg_R
       humanName: RightUpperLeg
       limit:
