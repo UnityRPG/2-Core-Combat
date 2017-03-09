@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour, IDamageable {
 
     [SerializeField] ParticleSystem hitParticleEffect;
     [SerializeField] float destroySecondsAfterDeath = 0.1f;
+    [SerializeField] Light highLight = null;
 
     float currentHealthPoints = 100f;
     NavMeshAgent navMeshAgent = null;
@@ -31,6 +32,7 @@ public class Enemy : MonoBehaviour, IDamageable {
         if (!hitParticleEffect) { Debug.LogWarning("Enemy " + gameObject + " has no hit particle effect"); }
         navMeshAgent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player");
+
     }
 
     void Update()
@@ -41,6 +43,21 @@ public class Enemy : MonoBehaviour, IDamageable {
             navMeshAgent.SetDestination(playerPosition); // rush the player
         }
         
+    }
+
+    void OnMouseOver()
+    {
+        Highlight(true);
+    }
+
+    void OnMouseExit()
+    {
+        Highlight(false);
+    }
+
+    void Highlight(bool isHighlighted)
+    {
+        highLight.enabled = isHighlighted;
     }
 
     // Only allow calling through interface, not enemy.TakeDamage()
