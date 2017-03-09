@@ -22,7 +22,7 @@ public class RangedWeapon : MonoBehaviour {
 	Enemy closestEnemy = null;
     float lastShotTime = 0f;
 	CameraRaycaster cameraRaycaster;
-	Vector3 aimDirection;
+	Vector3 aimDirection, aimAdjust;
 	GameObject dynamicObjectsParent = null;
 
 	// Use this for initialization
@@ -30,6 +30,7 @@ public class RangedWeapon : MonoBehaviour {
 		cameraRaycaster = Camera.main.GetComponent<CameraRaycaster>();
 		cameraRaycaster.notifyMouseClickObservers += OnMouseClicked; // registering
 		dynamicObjectsParent = new GameObject("DynamicObjects"); // consider singleton
+		Vector3 aimAdjust = new Vector3 (0, aimHeightAboveFeet, 0);
 	}
 
 	void Update()
@@ -49,14 +50,20 @@ public class RangedWeapon : MonoBehaviour {
                 transform.rotation = Quaternion.LookRotation(aimDirection); // Create rotation animator parameter
 				if (SetClosestEnemy())
 				{
-					var fireDirection = closestEnemy.transform.position - transform.position;
+					var fireDirection = closestEnemy.transform.position + aimAdjust - transform.position;
 					FireProjectile (fireDirection);
-					closestEnemy.Highlight (true);
+					if (closestEnemy)
+					{
+						closestEnemy.Highlight (true);
+					}
 				}
 				else
 				{
 					FireProjectile (transform.forward);
-					closestEnemy.Highlight (false);
+					if (closestEnemy)
+					{
+						closestEnemy.Highlight (false);
+					}
 				}
             }
         }
@@ -93,7 +100,6 @@ public class RangedWeapon : MonoBehaviour {
 	{
 		if (layerHit == 9)
 		{
-			Vector3 aimAdjust = new Vector3 (0, aimHeightAboveFeet, 0);
 			Vector3 target = hit.collider.gameObject.transform.position;
 			Vector3 velocity = (target + aimAdjust - transform.position).normalized * projectileSpeed;
 			FireProjectile (velocity);
