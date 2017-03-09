@@ -12,6 +12,14 @@ public class RangedWeapon : MonoBehaviour {
 	[SerializeField] float rightTriggerFireThreshold = 0.8f;
     [SerializeField] float aimStickThreshold = 0.2f;
 
+	[SerializeField] 
+	[Range(0.1f, 1f)]
+	[Tooltip("Size of virtual ball fired out looking for enemies")]
+	float sphereCastRadius = 0.5f;
+
+	[SerializeField] float sphereCastMaxDist = 20f;
+
+	Enemy closestEnemy = null;
     float lastShotTime = 0f;
 	CameraRaycaster cameraRaycaster;
 	Vector3 aimDirection;
@@ -26,6 +34,7 @@ public class RangedWeapon : MonoBehaviour {
 
 	void Update()
 	{
+		// XBox 360 controller is "6th Axis"
         if (Input.GetAxis ("Right Trigger") > rightTriggerFireThreshold)
 		{
 			isFiring = true;
@@ -38,12 +47,45 @@ public class RangedWeapon : MonoBehaviour {
             if (Mathf.Abs(h) > aimStickThreshold || Mathf.Abs(v) > aimStickThreshold)
             {
                 transform.rotation = Quaternion.LookRotation(aimDirection); // Create rotation animator parameter
-                FireProjectile(aimDirection);
+				if (SetClosestEnemy())
+				{
+					var fireDirection = closestEnemy.transform.position - transform.position;
+					FireProjectile (fireDirection);
+					closestEnemy.Highlight (true);
+				}
+				else
+				{
+					FireProjectile (transform.forward);
+					closestEnemy.Highlight (false);
+				}
             }
-            }
+        }
 		else
 		{
 			isFiring = false;
+		}
+	}
+
+	bool SetClosestEnemy()
+	{
+		RaycastHit hitInfo; // as out parameter
+		var hit = Physics.SphereCast (
+			transform.position,
+			sphereCastRadius,
+			transform.forward,
+			out hitInfo,
+			sphereCastMaxDist,
+			LayerMask.GetMask ("Enemy")
+		);
+			
+		if (hit)
+		{
+			closestEnemy = hitInfo.collider.gameObject.GetComponent<Enemy> (); // TODO beware Law of Demeter
+			return true;
+		} 
+		else
+		{
+			return false;
 		}
 	}
 

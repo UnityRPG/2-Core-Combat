@@ -55,7 +55,7 @@ public class Enemy : MonoBehaviour, IDamageable {
         Highlight(false);
     }
 
-    void Highlight(bool isHighlighted)
+    public void Highlight(bool isHighlighted)
     {
         highLight.enabled = isHighlighted;
     }
