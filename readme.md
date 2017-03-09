@@ -19,6 +19,7 @@ Here are the lectures of the course for this section...
 1. Ranged Attack Problem
 1. Update Your 1 Page GDD
 1. Set Your Art Direction
+1. Sketch Your Prototype Level
 
 ... more lectures coming soon!
 
