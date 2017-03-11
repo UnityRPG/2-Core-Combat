@@ -7,13 +7,23 @@ ModelImporter:
   fileIDToRecycleName:
     100000: //RootNode
     100002: WindMill
+    100004: Wind_Mill_Blades
+    100006: Wind_Mill_Building
     400000: //RootNode
     400002: WindMill
+    400004: Wind_Mill_Blades
+    400006: Wind_Mill_Building
     2300000: //RootNode
     2300002: WindMill
+    2300004: Wind_Mill_Blades
+    2300006: Wind_Mill_Building
     3300000: //RootNode
     3300002: WindMill
+    3300004: Wind_Mill_Blades
+    3300006: Wind_Mill_Building
     4300000: WindMill
+    4300002: Wind_Mill_Blades
+    4300004: Wind_Mill_Building
     7400000: Default Take
     9500000: //RootNode
   materials:
