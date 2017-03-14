@@ -7,13 +7,18 @@ ModelImporter:
   fileIDToRecycleName:
     100000: //RootNode
     100002: WATCH_TOWER
+    100004: Watch_Tower
     400000: //RootNode
     400002: WATCH_TOWER
+    400004: Watch_Tower
     2300000: //RootNode
     2300002: WATCH_TOWER
+    2300004: Watch_Tower
     3300000: //RootNode
     3300002: WATCH_TOWER
+    3300004: Watch_Tower
     4300000: WATCH_TOWER
+    4300002: Watch_Tower
     7400000: Default Take
     9500000: //RootNode
   materials:

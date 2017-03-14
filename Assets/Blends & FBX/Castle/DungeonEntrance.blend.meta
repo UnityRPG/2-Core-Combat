@@ -7,12 +7,16 @@ ModelImporter:
   fileIDToRecycleName:
     100000: //RootNode
     100002: DungeonEntrance
+    100004: Dungeon_Entrance
     400000: //RootNode
     400002: DungeonEntrance
+    400004: Dungeon_Entrance
     2300000: //RootNode
     2300002: DungeonEntrance
+    2300004: Dungeon_Entrance
     3300000: //RootNode
     3300002: DungeonEntrance
+    3300004: Dungeon_Entrance
     4300000: Dungeon_Entrance
     4300002: DungeonEntrance
     7400000: Default Take
