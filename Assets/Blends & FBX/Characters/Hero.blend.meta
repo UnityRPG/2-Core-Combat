@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 8d0a57b326030fc44ad6eeab6f398c6a
-timeCreated: 1489447059
+timeCreated: 1489450359
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -349,7 +349,7 @@ ModelImporter:
       position: {x: 0.00033110008, y: -0.769954, z: 0.05907217}
       rotation: {x: 1.9973712e-21, y: -0.00000035762793, z: 5.5850536e-15, w: 1}
       scale: {x: 1, y: 1, z: 1}
-    armTwist: 0.5
+    armTwist: 0.396
     foreArmTwist: 0.5
     upperLegTwist: 0.5
     legTwist: 0.5
