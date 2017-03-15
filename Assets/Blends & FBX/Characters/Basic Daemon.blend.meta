@@ -128,7 +128,7 @@ ModelImporter:
     13700006: TEST
     13700008: Daemon
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
   animations:
