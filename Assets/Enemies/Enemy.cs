@@ -6,8 +6,12 @@ using UnityStandardAssets.Characters.ThirdPerson;
 public class Enemy : MonoBehaviour, IDamageable {
 
     [SerializeField] float maxHealthPoints = 100f;
-    [SerializeField] float attackRadius = 4f;
     [SerializeField] float chaseRadius = 6f;
+
+    [SerializeField] float attackRadius = 4f;
+    [SerializeField] float damagePerShot = 9f;
+    [SerializeField] GameObject projectileToUse;
+    [SerializeField] GameObject projectileSocket;
 
     float currentHealthPoints = 100f;
     AICharacterControl aiCharacterControl = null;
@@ -31,8 +35,7 @@ public class Enemy : MonoBehaviour, IDamageable {
         float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
         if (distanceToPlayer <= attackRadius)
         {
-            print(gameObject.name + " attacking player");
-            // TODO spawn projectile
+            SpawnProjectile(); // TODO slow this down
         }
 
         if (distanceToPlayer <= chaseRadius)
@@ -43,6 +46,17 @@ public class Enemy : MonoBehaviour, IDamageable {
         {
             aiCharacterControl.SetTarget(transform);
         }
+    }
+
+    void SpawnProjectile()
+    {
+        GameObject newProjectile = Instantiate(projectileToUse, projectileSocket.transform.position, Quaternion.identity);
+        Projectile projectileComponent = newProjectile.GetComponent<Projectile>();
+        projectileComponent.damageCaused = damagePerShot;
+
+        Vector3 unitVectorToPlayer = (player.transform.position - projectileSocket.transform.position).normalized;
+        float projectileSpeed = projectileComponent.projectileSpeed;
+        newProjectile.GetComponent<Rigidbody>().velocity = unitVectorToPlayer * projectileSpeed;
     }
 
     void OnDrawGizmos()
