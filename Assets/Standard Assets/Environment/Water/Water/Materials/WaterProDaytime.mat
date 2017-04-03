@@ -63,10 +63,10 @@ Material:
       second: 0.44
     - first:
         name: _RefrDistort
-      second: 0.4
+      second: 0.5
     - first:
         name: _WaveScale
-      second: 0.118
+      second: 0.11
     m_Colors:
     - first:
         name: WaveSpeed
@@ -94,7 +94,7 @@ Material:
       second: {r: 1, g: 1, b: 0, a: 0}
     - first:
         name: _RefrColor
-      second: {r: 0.9372549, g: 0.9372549, b: 0.9372549, a: 1}
+      second: {r: 0.19016226, g: 0.3968798, b: 0.44117647, a: 1}
     - first:
         name: _RefractionTex_ST
       second: {r: 1, g: 1, b: 0, a: 0}
