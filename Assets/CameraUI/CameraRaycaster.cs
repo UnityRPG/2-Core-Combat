@@ -24,7 +24,7 @@ public class CameraRaycaster : MonoBehaviour
 		// Check if pointer is over an interactable UI element
 		if (EventSystem.current.IsPointerOverGameObject ())
 		{
-			NotifyObserersIfLayerChanged (5);
+			NotifyObserversIfLayerChanged (5);
 			return; // Stop looking for other objects
 		}
 
@@ -35,13 +35,13 @@ public class CameraRaycaster : MonoBehaviour
         RaycastHit? priorityHit = FindTopPriorityHit(raycastHits);
         if (!priorityHit.HasValue) // if hit no priority object
 		{
-			NotifyObserersIfLayerChanged (0); // broadcast default layer
+			NotifyObserversIfLayerChanged (0); // broadcast default layer
 			return;
 		}
 
 		// Notify delegates of layer change
 		var layerHit = priorityHit.Value.collider.gameObject.layer;
-		NotifyObserersIfLayerChanged(layerHit);
+		NotifyObserversIfLayerChanged(layerHit);
 		
 		// Notify delegates of highest priority game object under mouse when clicked
 		if (Input.GetMouseButton (0))
@@ -50,7 +50,7 @@ public class CameraRaycaster : MonoBehaviour
 		}
 	}
 
-	void NotifyObserersIfLayerChanged(int newLayer)
+	void NotifyObserversIfLayerChanged(int newLayer)
 	{
 		if (newLayer != topPriorityLayerLastFrame)
 		{

@@ -36,8 +36,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1423475316344466}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11, y: 0, z: 24}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.6, y: 0, z: 24}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -102,5 +102,4 @@ Tree:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1423475316344466}
   m_SpeedTreeWindAsset: {fileID: 0}
-  m_TreeData: {fileID: 114249654155242668, guid: c44b20a25f2586c46ae70568e464f7db,
-    type: 2}
+  m_TreeData: {fileID: 0}
