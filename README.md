@@ -14,15 +14,14 @@ Here are the lectures of the course for this section...
 ### Section 2 Introduction ###
 
 + We’ll cover core combat in this section
-+ We will focus on the simplest code solutions
-+ You will also learn some play tuning…
-+ … and create your first level
++ We will focus on the simplest code solutions 
++ You will also learn some play tuning… 
++ … and create your first level 
 
 (Unique Video Reference: 1_CC_RPG)
 
 ### Attacking The Enemies Design ###
 
-In this video...  
 + Attack requirements
 + CHALLENGE
 + Attack and movement distances
@@ -31,7 +30,6 @@ In this video...
 
 ### Using Gizmos To Visualise Code ###
 
-In This Video…  
 + Introducing the Gizmos class in Unity
 + Import code to visualise movement
 + Adding attackStopMoveRadius
@@ -42,7 +40,6 @@ In This Video…
 
 ### Player Health Bar UI ###
 
-In This Video…
 + Review structure of health bar pack
 + Export a custom package
 + Import custom package
@@ -53,7 +50,6 @@ In This Video…
 
 ### Enemy Floating Health Bar ###
 
-In This Video…
 + Import Enemy Health Bar v.2.unitypackage
 + Explore how the package works
 + Create Enemy.cs and wire-up
@@ -63,7 +59,6 @@ In This Video…
 
 ### Ranged Attack Problem ###
 
-In This Video…
 + Our current ranged attack problem
 + CHALLENGE
 + Diablo versus Torchlight 2 paradigms
@@ -73,7 +68,6 @@ In This Video…
 
 ### Update Your 1 Page GDD ###
 
-In this video...  
 + We discuss remaining sections of 1-Page GDD
 + We discuss Design Pillar
 + We discuss Remarkability
@@ -84,7 +78,6 @@ In this video...
 
 ### Set Your Art Direction ###
 
-In this video...
 + Your feedback to us
 + We’re starting to juggle priorities - combat needs level, level needs art direction
 + Structure of Art Concept Document
@@ -94,7 +87,6 @@ In this video...
 
 ### Sketch Your Prototype Level ###
 
-In this video...  
 + Designing your level - start with your level’s intention and requirements
 + How we are creating our village level
 + CHALLENGE
@@ -103,7 +95,6 @@ In this video...
 
 ### Importing Level Assets ###
 
-In this video...
 + We’ll import a level asset pack
 + Tidy up and prepare our scene
 + CHALLENGE
@@ -112,7 +103,6 @@ In this video...
 
 ### Creating Terrain ###
 
-In this video...
 + Terrain versus module assets approaches
 + Adding terrain and modifying it
 + Blocking out one moment in your level
@@ -122,7 +112,6 @@ In this video...
 
 ### Block Out Your Level ###
 
-In this video...
 + Getting rough placement for all of your level moments.
 + Dealing with elevation and camera issues.
 + CHALLENGE
@@ -131,27 +120,24 @@ In this video...
 
 ### Review And Adjustments ###
 
-In This Video…
 + Asset review and feedback for Mikey
-+ Art review - an interesting mistake
-+ Altering our level
-+ Setup & Standards text file
-+ CHALLENGE
++ Art review - an interesting mistake 
++ Altering our level 
++ Setup & Standards text file 
++ CHALLENGE 
 
 (Unique Video Reference: 13_2_RPG)
 
 ### Commenting Your Level ###
 
-In This Video…
-+ Learnings and tips from blocking out level
-+ Adding comments and references in your level
-+ CHALLENGE.
++ Learnings and tips from blocking out level 
++ Adding comments and references in your level 
++ CHALLENGE. 
 
 (Unique Video Reference: 14_2_RPG)
 
 ### Standardising Scene Setup ###
 
-In This Video…
 + Aside: why you need .psd.meta files
 + Scene folder structure and naming
 + Creating a best practices discussion
@@ -162,7 +148,6 @@ In This Video…
 
 ### Help Writing Physics Code ###
 
-In This Video…  
 + How importing asset packs affects your project
 + Bringing objects to life with script based rotation
 + How to use unit consistency to help you code
@@ -173,7 +158,6 @@ In This Video…
 
 ### Make Enemies Pathfind To Player ###
 
-In This Video…
 + How to fix disappearing hard shadows
 + Add a navmesh to your terrain(s)
 + Add a Navmesh Agent to our enemy prefab
@@ -183,7 +167,6 @@ In This Video…
 
 ### Fully Event Based Raycasting ###
 
-In This Video…
 + The limitations of our current architecture
 + Import new CameraRaycaster.cs
 + Review what’s changed and why
@@ -195,7 +178,6 @@ In This Video…
 
 ### Writing Custom Editors ###
 
-In This Video…
 + Why you would want to extend Unity’s editor
 + Review **CameraRaycasterEditor.cs**
 + CHALLENGE - check your understanding.
@@ -204,7 +186,6 @@ In This Video…
 
 ### Player Pathfinding To Enemies ###
 
-In this video...
 + Control your FOCUS - let’s move on
 + How to modify our player for pathfinding
 + CHALLENGE
@@ -213,7 +194,6 @@ In this video...
 
 ### Prototyping Goals And Progress ###
 
-In this video...
 + Recap our goals for prototyping
 + Where are you at with your goals - what is your score out of 10?
 + CHALLENGE.
@@ -222,7 +202,6 @@ In this video...
 
 ### Refine Your Nav Mesh ###
 
-In this video:  
 + Import latest art assets
 + Review distance, sizes, pacing in your level
 + Clean up Nav Mesh
@@ -232,15 +211,13 @@ In this video:
 
 ### Tuning And Exploring ###
 
-In This Video…
 + It’s important to experiment when prototyping
-+ CHALLENGE.
++ CHALLENGE. 
 
 (Unique Video Reference: 23_2_RPG)
 
 ### Importing Humanoid Animations ###
 
-In This Video…
 + Humanoid character import settings
 + How to replace a character’s mesh
 + CHALLENGE.
@@ -249,7 +226,6 @@ In This Video…
 
 ### Using Interfaces In C# ###
 
-In This Video…
 + What an interface is in C#, and why they’re useful
 + Where and when to use them, e.g. **IDamageable**
 + Building a simple example scene.
@@ -258,47 +234,42 @@ In This Video…
 
 ### Calling Methods Via Interfaces ###
 
-In This Video…
 + How to find game objects by interface
-+ How to call a method via an interface
-+ Getting damage working on player and enemy
-+ CHALLENGE.
++ How to call a method via an interface 
++ Getting damage working on player and enemy 
++ CHALLENGE. 
 
 (Unique Video Reference: 26_CC_RPG)
 
 ### Enemy Move And Attack Spheres ###
 
-In this video...
 + How to find game objects by interface
-+ How to call a method via an interface
-+ Getting damage working on player and enemy
-+ CHALLENGE.
++ How to call a method via an interface 
++ Getting damage working on player and enemy 
++ CHALLENGE. 
 
 (Unique Video Reference: 27_CC_RPG)
 
 ### Spawning Enemy Projectiles ###
 
-In this video...
 + A quick recap of unit vectors, speed and velocity
-+ Setup projectile prefab & attach to enemy
-+ CHALLENGE
++ Setup projectile prefab & attach to enemy 
++ CHALLENGE 
 
 (Unique Video Reference: 28_CC_RPG)
 
 ### InvokeRepeating() vs StartCoroutine() ###
 
-In this video...
 + How InvokeRepeating() is string referenced
-+ StartCoroutine() is type safe, but more complex
-+ A very quick overview of co-routines
-+ Test enemies damaging player
-+ CHALLENGE
++ StartCoroutine() is type safe, but more complex 
++ A very quick overview of co-routines 
++ Test enemies damaging player 
++ CHALLENGE 
 
 (Unique Video Reference: 29_CC_RPG)
 
 ### Player Melee Damage ###
 
-In this video...
 + Make enemies hit player in chest
 + Import dirty old hoe
 + Attach weapon to player’s hand
@@ -326,14 +297,18 @@ In this video...
 ### Start Your Stat Spreadsheet ###
 
 + Start your Stat Spreadsheet with some starting points
-+ Update Player and Enemy stats in level
-+ CHALLENGE
++ Update Player and Enemy stats in level 
++ CHALLENGE 
+
+(Unique Video Reference: 33_CC_RPG)
 
 ### Healing Companion Prototype ###
 
 + Using the tools we have
-+ Creating a healer
-+ CHALLENGE
++ Creating a healer 
++ CHALLENGE 
+
+(Unique Video Reference: 34_CC_RPG)
 
 ### Level Story Theme And Flow ###
 
@@ -352,12 +327,92 @@ In this video...
 
 (Unique Video Reference: 36_CC_RPG)
 
+### Rising Complexity, Refactoring ###
 
-... more lectures coming soon!
++ How complexity may scale in a project
++ The bigger picture of smelly code
++ Review TODOs to feel in control
+
+(Unique Video Reference: 37_CC_RPG)
+
+### Using The Trail Renderer Component ###
+
++ Why our projectiles are hard to see
++ Strategies for improving visibility 
++ Using Trail Renderers to help see projectiles 
++ CHALLENGE 
+
+(Unique Video Reference: 38_CC_RPG)
+
+### Preventing Projectile Pass-Through ###
+
++ Options for stopping projectiles passing through
++ Using Continuous Dynamic collision detection 
++ Fix characters crouching on impact issue 
++ Projectiles self-organise and destroy themselves 
+
+(Unique Video Reference: 39_CC_RPG)
+
+### Fix Wobbly Characters ###
+
++ Our Current Movement Bugs
++ Tuning To Find A Fix
++ CHALLENGE
+
+(Unique Video Reference: 40_CC_RPG)
+
+### Preparing Our Assets Folder ###
+
++ The problem with importing assets
++ Our various needs with our assets
++ Rearranging our assets folder
++ CHALLENGE
+
+(Unique Video Reference: 41_CC_RPG)
+
+### Set Dressing Our Level ###
+
++ What we mean by set dressing
++ Import textures and assets
++ Make the ground look good
++ CHALLENGE
+
+(Unique Video Reference: 42_CC_RPG)
+
+### Adding Water ###
+
++ Import water from standard assets
++ CHALLENGE
++ Place water
+
+(Unique Video Reference: 43_CC_RPG)
+
+### Movement Bug And Water ###
+
++ The bug we’re seeing that started after we added water
++ My solution to the bug
++ A conversation about making decisions on how much time to invest in fixing bugs
++ CHALLENGE
+
+(Unique Video Reference: 44_CC_RPG)
+
+### Adding Trees ###
+
++ Import trees from standard assets, asset store or our asset pack
++ Setting up our tree painting
++ CHALLENGE
++ Trees in our level
+
+(Unique Video Reference: 45_CC_RPG)
+
+### Asset Showcase Scene ###
+
++ Creating and explaining the Asset Showcase Scene
++ CHALLENGE
+
+(Unique Video Reference: 46_CC_RPG)
+
+### More Content Coming Soon... ###
 
 ---
-Thanks for visiting, and enjoy your stay
-
-Ben & The Team
-
-[GameDev.tv](https://community.gamedev.tv)
+Find out more about our [Unity RPG Creator Course Series](https://www.udemy.com/unityrpg/?couponCode=GitHubDiscount).
