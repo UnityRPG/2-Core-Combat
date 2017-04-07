@@ -1189,6 +1189,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1429510370}
     m_Modifications:
+    - target: {fileID: 23316373056155498, guid: 565e359ae5e266f48844a285ce6e97bf,
+        type: 2}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4433910637143446, guid: 565e359ae5e266f48844a285ce6e97bf, type: 2}
       propertyPath: m_LocalPosition.x
       value: 12
@@ -1229,6 +1234,16 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 23316373056155498, guid: 565e359ae5e266f48844a285ce6e97bf,
+        type: 2}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9c4dd8c3a96f5be4f8e459b7d207a008, type: 2}
+    - target: {fileID: 23316373056155498, guid: 565e359ae5e266f48844a285ce6e97bf,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5022afa190977c646822599662e5aa3c, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 565e359ae5e266f48844a285ce6e97bf, type: 2}
   m_IsPrefabParent: 0
@@ -2756,7 +2771,7 @@ Prefab:
         type: 2}
       propertyPath: weaponInUse
       value: 
-      objectReference: {fileID: 11400000, guid: ce7775877fb709346bbf849923cc4dde,
+      objectReference: {fileID: 11400000, guid: 34ab0c72d9a69d447bfdb07b7a6d8ded,
         type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 2}
