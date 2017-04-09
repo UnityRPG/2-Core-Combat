@@ -2767,15 +2767,26 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 114633348878164724, guid: 7737647c22c1fc64a88d5cd030c352ce,
-        type: 2}
-      propertyPath: weaponInUse
-      value: 
-      objectReference: {fileID: 11400000, guid: 34ab0c72d9a69d447bfdb07b7a6d8ded,
-        type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114446483106779698, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1727376728 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1718813421843222, guid: 7737647c22c1fc64a88d5cd030c352ce,
+    type: 2}
+  m_PrefabInternal: {fileID: 1727376727}
+--- !u!114 &1727376730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1727376728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 610f816287df94a478980beb4ea34d2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1742480974
 Prefab:
   m_ObjectHideFlags: 0
