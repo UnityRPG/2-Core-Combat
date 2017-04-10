@@ -15,4 +15,4 @@ MonoBehaviour:
     type: 2}
   weaponPrefab: {fileID: 1871614424300610, guid: 413c47d84d1a20046911d7de6f977649,
     type: 2}
-  attackAnimation: {fileID: 0}
+  attackAnimation: {fileID: 7400000, guid: 1315bcd7509173f44bc6655b2673dd4d, type: 3}

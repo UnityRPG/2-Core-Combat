@@ -12,12 +12,24 @@ public class Player : MonoBehaviour, IDamageable {
     [SerializeField] float minTimeBetweenHits = .5f;
     [SerializeField] float maxAttackRange = 2f;
     [SerializeField] Weapon weaponInUse;
+    [SerializeField] AnimatorOverrideController animOverride;
 
+    const string ATTACK = "Attack";
+    const string DEFAULT_ANIM_CLIP_NAME = "PlayerDefault";
     float currentHealthPoints;
     CameraRaycaster cameraRaycaster;
     float lastHitTime = 0f;
+    GameObject enemy;
+    Animator animator;
 
     public float healthAsPercentage { get { return currentHealthPoints / maxHealthPoints; }}
+
+    void Awake()
+    {
+        animator = GetComponent<Animator>();
+        animator.runtimeAnimatorController = animOverride;
+        animOverride[DEFAULT_ANIM_CLIP_NAME] = weaponInUse.attackAnimation;
+    }
 
     void Start()
     {
@@ -55,20 +67,27 @@ public class Player : MonoBehaviour, IDamageable {
     {
         if (layerHit == enemyLayer)
         {
-            var enemy = raycastHit.collider.gameObject;
-             
+            enemy = raycastHit.collider.gameObject;
+
             // Check enemy is in range 
             if ((enemy.transform.position - transform.position).magnitude > maxAttackRange)
             {
                 return;
             }
 
-            var enemyComponent = enemy.GetComponent<Enemy>();
-            if (Time.time - lastHitTime > minTimeBetweenHits)
-            {
-                enemyComponent.TakeDamage(damagePerHit);
-                lastHitTime = Time.time;
-            }
+            AttackIfNotTooSoon();   
+        }
+    }
+
+    private void AttackIfNotTooSoon()
+    {
+        var enemyComponent = enemy.GetComponent<Enemy>();
+        if (Time.time - lastHitTime > minTimeBetweenHits)
+        {
+            enemyComponent.TakeDamage(damagePerHit);
+            transform.LookAt(enemy.transform);
+            animator.SetTrigger(ATTACK);
+            lastHitTime = Time.time;
         }
     }
 
