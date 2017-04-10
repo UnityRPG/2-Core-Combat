@@ -9,7 +9,7 @@ public class Player : MonoBehaviour, IDamageable {
     [SerializeField] int enemyLayer = 9;
     [SerializeField] float maxHealthPoints = 100f;
     [SerializeField] float damagePerHit = 10f;
-    [SerializeField] float minTimeBetweenHits = .5f;
+    [SerializeField] float minTimeBetweenHits = 1f;
     [SerializeField] float maxAttackRange = 2f;
     [SerializeField] Weapon weaponInUse;
     [SerializeField] AnimatorOverrideController animOverride;
@@ -21,6 +21,7 @@ public class Player : MonoBehaviour, IDamageable {
     float lastHitTime = 0f;
     GameObject enemy;
     Animator animator;
+    bool isAttacking = false;
 
     public float healthAsPercentage { get { return currentHealthPoints / maxHealthPoints; }}
 
@@ -36,6 +37,11 @@ public class Player : MonoBehaviour, IDamageable {
         RegisterForMouseClick();
         currentHealthPoints = maxHealthPoints;
         PutWeaponInHand();
+    }
+
+    public bool IsAttacking()
+    {
+        return isAttacking;
     }
 
     private void PutWeaponInHand()
@@ -75,15 +81,24 @@ public class Player : MonoBehaviour, IDamageable {
                 return;
             }
 
-            AttackIfNotTooSoon();   
+            RequestAttack();   
         }
     }
 
-    private void AttackIfNotTooSoon()
+    void Update()
     {
-        var enemyComponent = enemy.GetComponent<Enemy>();
         if (Time.time - lastHitTime > minTimeBetweenHits)
         {
+            isAttacking = false;
+        }
+   }
+
+    private void RequestAttack()
+    {
+        var enemyComponent = enemy.GetComponent<Enemy>();
+        if (!isAttacking)
+        {
+            isAttacking = true;
             enemyComponent.TakeDamage(damagePerHit);
             transform.LookAt(enemy.transform);
             animator.SetTrigger(ATTACK);

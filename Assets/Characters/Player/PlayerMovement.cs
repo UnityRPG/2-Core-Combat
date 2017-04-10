@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     Vector3 clickPoint;
     AICharacterControl aiCharacterControl = null;
     GameObject walkTarget = null;
+    Player player;
 
     // TODO solve fight between serialize and const
     [SerializeField] const int walkableLayerNumber = 8;
@@ -26,28 +27,33 @@ public class PlayerMovement : MonoBehaviour
         thirdPersonCharacter = GetComponent<ThirdPersonCharacter>();
         aiCharacterControl = GetComponent<AICharacterControl>();
         walkTarget = new GameObject("walkTarget");
-
+        player = GetComponent<Player>();
         cameraRaycaster.notifyMouseClickObservers += ProcessMouseClick;
     }
 
 
     void ProcessMouseClick(RaycastHit raycastHit, int layerHit)
     {
-        switch (layerHit)
+        if (player.IsAttacking())
         {
-            case enemyLayerNumber:
-                // navigate to the enemy
-                GameObject enemy = raycastHit.collider.gameObject;
-                aiCharacterControl.SetTarget(enemy.transform);
-                break;
-            case walkableLayerNumber:
-                // navigate to point on the ground
-                walkTarget.transform.position = raycastHit.point;
-                aiCharacterControl.SetTarget(walkTarget.transform);
-                break;
-            default:
-                Debug.LogWarning("Don't know how to handle mouse click for player movement");
-                return;
+            return;
+        }
+        else
+        {
+            switch (layerHit)
+            {
+                case enemyLayerNumber:
+                    GameObject enemy = raycastHit.collider.gameObject;
+                    aiCharacterControl.SetTarget(enemy.transform);
+                    break;
+                case walkableLayerNumber:
+                    walkTarget.transform.position = raycastHit.point;
+                    aiCharacterControl.SetTarget(walkTarget.transform);
+                    break;
+                default:
+                    Debug.LogWarning("Don't know how to handle mouse click for player movement");
+                    return;
+            }
         }
     }
 
