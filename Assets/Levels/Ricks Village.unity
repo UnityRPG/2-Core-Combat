@@ -2774,7 +2774,19 @@ Prefab:
         type: 2}
       propertyPath: weaponInUse
       value: 
-      objectReference: {fileID: 11400000, guid: ce7775877fb709346bbf849923cc4dde,
+      objectReference: {fileID: 11400000, guid: af8e5c64b0968af4ca00f301a5a53431,
+        type: 2}
+    - target: {fileID: 114633348878164724, guid: 7737647c22c1fc64a88d5cd030c352ce,
+        type: 2}
+      propertyPath: weaponConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: af8e5c64b0968af4ca00f301a5a53431,
+        type: 2}
+    - target: {fileID: 114633348878164724, guid: 7737647c22c1fc64a88d5cd030c352ce,
+        type: 2}
+      propertyPath: weaponSetup
+      value: 
+      objectReference: {fileID: 11400000, guid: ee896582109e812439f327ebf3f701d3,
         type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 2}

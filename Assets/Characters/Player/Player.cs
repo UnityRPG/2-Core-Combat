@@ -12,7 +12,7 @@ public class Player : MonoBehaviour, IDamageable {
     [SerializeField] float minTimeBetweenHits = .5f;
     [SerializeField] float maxAttackRange = 2f;
 
-    [SerializeField] Weapon weaponInUse;
+    [SerializeField] WeaponConfig weaponSetup;
 
     GameObject currentTarget;
     float currentHealthPoints;
@@ -25,25 +25,16 @@ public class Player : MonoBehaviour, IDamageable {
     {
         RegisterForMouseClick();
         currentHealthPoints = maxHealthPoints;
-        PutWeaponInHand();
+        weaponSetup.CreateWeaponAsChild(GetDominandHandTransform());
     }
 
-    private void PutWeaponInHand()
-    {
-        var weaponPrefab = weaponInUse.GetWeaponPrefab();
-        GameObject dominantHand = RequestDominantHand();
-        var weapon = Instantiate(weaponPrefab, dominantHand.transform);
-        weapon.transform.localPosition = weaponInUse.gripTransform.localPosition;
-        weapon.transform.localRotation = weaponInUse.gripTransform.localRotation;
-    }
-
-    private GameObject RequestDominantHand()
+    private Transform GetDominandHandTransform()
     {
         var dominantHands = GetComponentsInChildren<DominantHand>();
         int numberOfDominantHands = dominantHands.Length;
         Assert.IsFalse(numberOfDominantHands <= 0, "No DominantHand found on Player, please add one");
         Assert.IsFalse(numberOfDominantHands >  1, "Multiple DominantHand scripts on Player, please remove one");
-        return dominantHands[0].gameObject;
+        return dominantHands[0].gameObject.transform;
     }
 
     private void RegisterForMouseClick()
