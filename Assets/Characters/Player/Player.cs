@@ -102,6 +102,8 @@ public class Player : MonoBehaviour, IDamageable {
             enemyComponent.TakeDamage(damagePerHit);
             transform.LookAt(enemy.transform);
             animator.SetTrigger(ATTACK);
+            GetComponent<AudioSource>().clip = weaponInUse.playerAttackSound;
+            GetComponent<AudioSource>().Play();
             lastHitTime = Time.time;
         }
     }

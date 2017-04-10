@@ -9,6 +9,7 @@ public class Weapon : ScriptableObject {
 
     [SerializeField] GameObject weaponPrefab; 
     public AnimationClip attackAnimation;
+    public AudioClip playerAttackSound;
 
     public GameObject GetWeaponPrefab() {
         return weaponPrefab;
