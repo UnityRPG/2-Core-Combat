@@ -11,10 +11,8 @@ public class Player : MonoBehaviour, IDamageable {
     [SerializeField] float damagePerHit = 10f;
     [SerializeField] float minTimeBetweenHits = .5f;
     [SerializeField] float maxAttackRange = 2f;
-
     [SerializeField] Weapon weaponInUse;
 
-    GameObject currentTarget;
     float currentHealthPoints;
     CameraRaycaster cameraRaycaster;
     float lastHitTime = 0f;
@@ -59,13 +57,11 @@ public class Player : MonoBehaviour, IDamageable {
         {
             var enemy = raycastHit.collider.gameObject;
              
-            // Check enemy is in range
+            // Check enemy is in range 
             if ((enemy.transform.position - transform.position).magnitude > maxAttackRange)
             {
                 return;
             }
-
-            currentTarget = enemy;
 
             var enemyComponent = enemy.GetComponent<Enemy>();
             if (Time.time - lastHitTime > minTimeBetweenHits)
