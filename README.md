@@ -14,9 +14,9 @@ Here are the lectures of the course for this section...
 ### Section 2 Introduction ###
 
 + We’ll cover core combat in this section
-+ We will focus on the simplest code solutions 
-+ You will also learn some play tuning… 
-+ … and create your first level 
++ We will focus on the simplest code solutions
++ You will also learn some play tuning…
++ … and create your first level
 
 (Unique Video Reference: 1_CC_RPG)
 
@@ -121,18 +121,18 @@ Here are the lectures of the course for this section...
 ### Review And Adjustments ###
 
 + Asset review and feedback for Mikey
-+ Art review - an interesting mistake 
-+ Altering our level 
-+ Setup & Standards text file 
-+ CHALLENGE 
++ Art review - an interesting mistake
++ Altering our level
++ Setup & Standards text file
++ CHALLENGE
 
 (Unique Video Reference: 13_2_RPG)
 
 ### Commenting Your Level ###
 
-+ Learnings and tips from blocking out level 
-+ Adding comments and references in your level 
-+ CHALLENGE. 
++ Learnings and tips from blocking out level
++ Adding comments and references in your level
++ CHALLENGE.
 
 (Unique Video Reference: 14_2_RPG)
 
@@ -212,7 +212,7 @@ Here are the lectures of the course for this section...
 ### Tuning And Exploring ###
 
 + It’s important to experiment when prototyping
-+ CHALLENGE. 
++ CHALLENGE.
 
 (Unique Video Reference: 23_2_RPG)
 
@@ -235,36 +235,36 @@ Here are the lectures of the course for this section...
 ### Calling Methods Via Interfaces ###
 
 + How to find game objects by interface
-+ How to call a method via an interface 
-+ Getting damage working on player and enemy 
-+ CHALLENGE. 
++ How to call a method via an interface
++ Getting damage working on player and enemy
++ CHALLENGE.
 
 (Unique Video Reference: 26_CC_RPG)
 
 ### Enemy Move And Attack Spheres ###
 
 + How to find game objects by interface
-+ How to call a method via an interface 
-+ Getting damage working on player and enemy 
-+ CHALLENGE. 
++ How to call a method via an interface
++ Getting damage working on player and enemy
++ CHALLENGE.
 
 (Unique Video Reference: 27_CC_RPG)
 
 ### Spawning Enemy Projectiles ###
 
 + A quick recap of unit vectors, speed and velocity
-+ Setup projectile prefab & attach to enemy 
-+ CHALLENGE 
++ Setup projectile prefab & attach to enemy
++ CHALLENGE
 
 (Unique Video Reference: 28_CC_RPG)
 
 ### InvokeRepeating() vs StartCoroutine() ###
 
 + How InvokeRepeating() is string referenced
-+ StartCoroutine() is type safe, but more complex 
-+ A very quick overview of co-routines 
-+ Test enemies damaging player 
-+ CHALLENGE 
++ StartCoroutine() is type safe, but more complex
++ A very quick overview of co-routines
++ Test enemies damaging player
++ CHALLENGE
 
 (Unique Video Reference: 29_CC_RPG)
 
@@ -297,16 +297,16 @@ Here are the lectures of the course for this section...
 ### Start Your Stat Spreadsheet ###
 
 + Start your Stat Spreadsheet with some starting points
-+ Update Player and Enemy stats in level 
-+ CHALLENGE 
++ Update Player and Enemy stats in level
++ CHALLENGE
 
 (Unique Video Reference: 33_CC_RPG)
 
 ### Healing Companion Prototype ###
 
 + Using the tools we have
-+ Creating a healer 
-+ CHALLENGE 
++ Creating a healer
++ CHALLENGE
 
 (Unique Video Reference: 34_CC_RPG)
 
@@ -338,18 +338,18 @@ Here are the lectures of the course for this section...
 ### Using The Trail Renderer Component ###
 
 + Why our projectiles are hard to see
-+ Strategies for improving visibility 
-+ Using Trail Renderers to help see projectiles 
-+ CHALLENGE 
++ Strategies for improving visibility
++ Using Trail Renderers to help see projectiles
++ CHALLENGE
 
 (Unique Video Reference: 38_CC_RPG)
 
 ### Preventing Projectile Pass-Through ###
 
 + Options for stopping projectiles passing through
-+ Using Continuous Dynamic collision detection 
-+ Fix characters crouching on impact issue 
-+ Projectiles self-organise and destroy themselves 
++ Using Continuous Dynamic collision detection
++ Fix characters crouching on impact issue
++ Projectiles self-organise and destroy themselves
 
 (Unique Video Reference: 39_CC_RPG)
 
@@ -412,7 +412,66 @@ Here are the lectures of the course for this section...
 
 (Unique Video Reference: 46_CC_RPG)
 
-### More Content Coming Soon... ###
+### Get Your Dev Hat Back On ###
+
++ How NOT to automate new scene setup (yet)
++ Showcase scene detail res. & scene file clash
++ Update / import latest art assets. Blue trees?
++ Discuss movement bug / deferring (80% rule)
++ Rename **NotifyObser**v**ers** and fix console errors
++ How to highlight member variables in VS.
+
+(Unique Video Reference: 47_CC_RPG)
+
+### Introducing Scriptable Objects ###
+
++ The difference between data and state
++ Why we use Scriptable Objects for data
++ Using [CreateAssetMenu(menuName=”Name”)]
++ Programmatically placing a weapon in hand.
+
+(Unique Video Reference: 48_CC_RPG)
+
+### Adjustable Weapon Grip ###
+
++ Create a weapon grip transform prefab
++ Associate the weapon grip with the weapon*
++ Ensure weapon spawns with correct grip
+_* Later you could have multiple grips per weapon._
+_
+(Unique Video Reference: 49_CC_RPG)_
+
+### Problems With Prefabs ###
+
++ Recover Rick’s value from player instance
++ Use a MonoBehaviour to tag weapon hand.
+
+(Unique Video Reference: 50_CC_RPG)
+
+### Import Mechanim Animation Pack ###
+
++ Clear all console warnings
++ Simplify Ethan’s Animator Controller
++ Import free animation pack
++ Setup Attack animation trigger.
+
+(Unique Video Reference: 52_CC_RPG)
+
+### Projectiles Discriminate ###
+
++ Why enemies currently hurt one-another
++ CHALLENGE
++ Split class into SO and MonoBehaviour
++ Add facility for sound.
+
+(Unique Video Reference: 52_CC_RPG)
+
+### Section 2 Wrap Up ###
+
++ What you’ve learnt
++ What’s coming up next.
+
+(Unique Video Reference: 53_CC_RPG)
 
 ---
 Find out more about our [Unity RPG Creator Course Series](https://www.udemy.com/unityrpg/?couponCode=GitHubDiscount).
