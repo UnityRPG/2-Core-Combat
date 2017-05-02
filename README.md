@@ -472,6 +472,3 @@ _
 + What’s coming up next.
 
 (Unique Video Reference: 53_CC_RPG)
-
----
-Find out more about our [Unity RPG Creator Course Series](https://www.udemy.com/unityrpg/?couponCode=GitHubDiscount).
