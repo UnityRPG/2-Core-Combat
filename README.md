@@ -91,7 +91,7 @@ Here are the lectures of the course for this section...
 + How we are creating our village level
 + CHALLENGE
 
-(Unique Video Reference: 9_2_RPG)
+(Unique Video Reference: 9_CC_RPG)
 
 ### Importing Level Assets ###
 
@@ -99,7 +99,15 @@ Here are the lectures of the course for this section...
 + Tidy up and prepare our scene
 + CHALLENGE
 
-(Unique Video Reference: 10_2_RPG)
+(Unique Video Reference: 10_CC_RPG)
+
+### Instructor Hangout 2.1
+
++ What we have covered so far
++ Answers to common questions
++ What's coming up in the next 10 lectures.
+
+(Unique Video Reference: 10b_CC_RPG)
 
 ### Creating Terrain ###
 
