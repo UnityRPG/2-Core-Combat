@@ -154,6 +154,13 @@ Here are the lectures of the course for this section...
 
 (Unique Video Reference: 15_2_RPG)
 
+### 16b Dimensional Analysis Primer ###
+
++ What is dimensional analysis?
++ Why would you care?
++ How to use it
++ Some worked examples.
+
 ### Help Writing Physics Code ###
 
 + How importing asset packs affects your project
