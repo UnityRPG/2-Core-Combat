@@ -180,6 +180,13 @@ Here are the lectures of the course for this section...
 
 (Unique Video Reference: 17_2_RPG)
 
+### 17b Don't Panic! ###
+
++ The next video sucks but can’t be edited
++ Ben explains why, and what you can do
++ Please forgive us
++ This type of video won’t be used in future.
+
 ### Fully Event Based Raycasting ###
 
 + The limitations of our current architecture
